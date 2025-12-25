@@ -1,0 +1,51 @@
+# Arachne v2 - Optional / Heavy / Experimental requirements
+# Install these only on systems with sufficient resources (GPU, compilers)
+
+# === AI / ML (very large, optional) ===
+torch>=2.3.0
+torchvision>=0.18.0
+transformers>=4.40.0
+diffusers>=0.28.0
+accelerate>=0.27.0
+sentencepiece>=0.1.99
+
+# Adversarial libraries (optional)
+adversarial-robustness-toolbox>=1.18.0
+foolbox>=3.3.4
+cleverhans>=4.0.0
+textattack>=0.3.9
+
+# Local LLMs / vector DBs (optional)
+llama-cpp-python>=0.2.48
+sentence-transformers>=2.2.2
+langchain>=0.1.0
+chromadb>=0.4.22
+
+# Cloud AI APIs (optional)
+openai>=1.30.0
+anthropic>=0.8.0
+cohere>=4.37.0
+together>=0.3.0
+
+# Browser automation alternatives (optional)
+selenium>=4.15.0
+undetected-chromedriver>=3.5.5
+pyppeteer>=1.0.0
+
+# Databases & GLibs (optional)
+neo4j>=5.20.0
+py2neo>=2021.2.0
+igraph>=0.11.0
+
+# Data science (optional)
+pandas>=2.1.0
+scipy>=1.11.0
+polars>=0.20.0
+
+# Security tooling wrappers (optional)
+nuclei-python>=0.1.0
+ffuf>=0.1.0
+sqlmapapi>=0.1.0
+
+# Many more optional tools exist in the original manifest. Keep them here
+# and install selectively to avoid platform-specific failures.

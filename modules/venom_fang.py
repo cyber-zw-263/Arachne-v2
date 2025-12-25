@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 import random
 
 # Our surprise imports
-from utils.payload_genius import PolyglotGenerator, TemporalPayloadFactory
+from utils.payload_genius import PayloadGenius
 from utils.semantic_analyzer import infer_parameter_semantics
 
 console = Console()

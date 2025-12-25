@@ -225,3 +225,47 @@ if __name__ == "__main__":
     print(f"[+] Found {len(results.imports)} unique imports: {list(results.imports)[:5]}...")
     if results.vulnerability_hints:
         print(f"[!] Danger hints: {results.vulnerability_hints}")
+
+
+def extract_technologies(text: str):
+    """Heuristic extraction of well-known technology names from text."""
+    techs = []
+    if not text:
+        return techs
+    candidates = ['wordpress', 'django', 'flask', 'express', 'react', 'angular', 'nginx', 'apache', 'node', 'php', 'python', 'java', 'spring', 'rails']
+    lowered = text.lower()
+    for c in candidates:
+        if c in lowered:
+            techs.append(c)
+    return techs
+
+
+def find_secrets_in_text(text: str):
+    """Return list of secret-like strings found in text using SECRET_PATTERNS."""
+    found = []
+    if not text:
+        return found
+    for secret_type, pattern in SemanticAnalyzer.SECRET_PATTERNS.items():
+        for match in pattern.findall(text):
+            if isinstance(match, tuple):
+                val = match[0]
+            else:
+                val = match
+            found.append({'type': secret_type, 'value': val})
+    return found
+
+
+def infer_parameter_semantics(param_name: str) -> str:
+    """Crude inference of parameter semantics by name."""
+    if not param_name:
+        return 'string'
+    pn = param_name.lower()
+    if 'id' == pn or pn.endswith('_id') or pn == 'id':
+        return 'integer'
+    if 'date' in pn or 'time' in pn:
+        return 'date'
+    if 'email' in pn:
+        return 'email'
+    if any(k in pn for k in ['token', 'key', 'secret', 'passwd', 'password']):
+        return 'secret'
+    return 'string'
