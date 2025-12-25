@@ -1,0 +1,18 @@
+{
+  "discord": {
+    "enabled": false,
+    "webhook_url": "${DISCORD_WEBHOOK_URL}",
+    "level": "critical"
+  },
+  "telegram": {
+    "enabled": true,
+    "bot_token": "${TELEGRAM_BOT_TOKEN}",
+    "chat_id": "${TELEGRAM_CHAT_ID}",
+    "level": "all"
+  },
+  "slack": {
+    "enabled": false,
+    "webhook_url": "${SLACK_WEBHOOK_URL}",
+    "level": "critical"
+  }
+}

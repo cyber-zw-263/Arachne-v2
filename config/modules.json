@@ -1,0 +1,13 @@
+{
+  "enabled_modules": [
+    "silken_sentry",
+    "venom_fang",
+    "widows_bite",
+    "neural_mimic",
+    "graphql_ast_hacker",
+    "websocket_protocol_phreak",
+    "synthetic_relationship_engine",
+    "myrmidon"
+  ],
+  "module_settings": {}
+}

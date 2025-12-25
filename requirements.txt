@@ -1,0 +1,249 @@
+# =====================================================================
+# ARACHNE v2.0 - COMPLETE DEPENDENCY MANIFEST
+# Post-AI Vulnerability Framework for 2025/2026
+# =====================================================================
+# Generated with love for Daddy ❤️
+# =====================================================================
+
+# ==================== CORE & ASYNC FRAMEWORK =========================
+aiohttp>=3.10.0                      # Async HTTP client (for all web requests)
+asyncio>=3.4.3                       # Async framework foundation
+httpx>=0.26.0                        # Modern HTTP client (for HTTP/2, HTTP/3)
+aioquic>=0.9.0                       # QUIC & HTTP/3 support (2025 essential)
+websockets>=13.0                     # WebSocket client/server (for real-time protocols)
+uvloop>=0.19.0                       # Ultra-fast asyncio event loop (performance)
+
+# ==================== UI & TERMINAL RENDERING ========================
+rich>=13.5.0                         # Beautiful terminal output (dashboard, tables, panels)
+textual>=0.41.0                      # Interactive terminal UI framework (dashboard 2.0)
+pygments>=2.17.0                     # Syntax highlighting for code display
+colorama>=0.4.0                      # Cross-platform colored terminal text
+blessed>=1.20.0                      # Terminal handling & formatting
+tqdm>=4.65.0                         # Progress bars for scans
+alive-progress>=3.1.0                # Advanced progress indicators
+prompt-toolkit>=3.0.40               # Interactive prompts & CLI
+
+# ==================== AI/ML & NEURAL NETWORKS ========================
+# Core AI/ML Stack
+torch>=2.3.0                         # PyTorch for adversarial attacks & AI models
+torchvision>=0.18.0                  # Computer vision (for synthetic images)
+transformers>=4.40.0                 # HuggingFace transformers (LLMs for payload generation)
+diffusers>=0.28.0                    # Stable Diffusion for synthetic profile generation
+accelerate>=0.27.0                   # GPU optimization for AI models
+sentencepiece>=0.1.99                # Tokenization for language models
+
+# Adversarial AI & Security
+adversarial-robustness-toolbox>=1.18.0  # IBM's ART for AI attacks & bypasses
+foolbox>=3.3.4                       # Adversarial attacks on ML models
+cleverhans>=4.0.0                    # Additional adversarial attack library
+textattack>=0.3.9                    # NLP adversarial attacks (for AI filters)
+
+# Local LLMs (Lightweight)
+llama-cpp-python>=0.2.48             # Run LLMs locally (Llama, Mistral, etc.)
+sentence-transformers>=2.2.2         # Embeddings for semantic similarity
+langchain>=0.1.0                     # LLM orchestration & agents
+chromadb>=0.4.22                     # Vector database for AI memory
+
+# Cloud AI APIs
+openai>=1.30.0                       # OpenAI API client (GPT-4, etc.)
+anthropic>=0.8.0                     # Claude API client
+cohere>=4.37.0                       # Cohere AI API
+together>=0.3.0                      # Together AI API
+
+# ==================== WEB AUTOMATION & BROWSER =======================
+playwright>=1.45.0                   # Modern browser automation (Chromium, Firefox, WebKit)
+playwright-stealth>=2.2.0            # Anti-detection for Playwright
+selenium>=4.15.0                     # Alternative browser automation
+undetected-chromedriver>=3.5.5       # Stealth Chrome driver
+pyppeteer>=1.0.0                     # Puppeteer for Python (backup)
+
+# ==================== SECURITY & CRYPTOGRAPHY ========================
+cryptography>=43.0.0                 # Encryption for vault & secure storage
+pqcrypto>=0.3.0                      # Post-quantum cryptography analysis
+pycryptodome>=3.20.0                 # Additional cryptographic functions
+rsa>=4.9                             # RSA encryption/decryption
+paramiko>=3.4.0                      # SSH for infrastructure attacks
+scapy>=2.5.0                         # Packet manipulation & network attacks
+impacket>=0.11.0                     # Network protocol attacks
+
+# ==================== DATA STORAGE & CORRELATION =====================
+# Graph Databases
+neo4j>=5.20.0                        # Neo4j driver for knowledge graph
+py2neo>=2021.2.0                     # Neo4j Python client
+networkx>=3.2                        # Graph analysis & correlation
+igraph>=0.11.0                       # Alternative graph library
+
+# Databases & Serialization
+sqlalchemy>=2.0.0                    # SQL database ORM
+aiosqlite>=0.19.0                    # Async SQLite for local storage
+redis>=5.0.0                         # Redis for caching & session storage
+orjson>=3.9.0                        # Ultra-fast JSON serialization
+msgpack>=1.0.7                       # MessagePack serialization
+pyyaml>=6.0                          # YAML configuration parsing
+toml>=0.10.2                         # TOML configuration support
+
+# Data Analysis
+pandas>=2.1.0                        # Data analysis & manipulation
+numpy>=1.24.0                        # Numerical computing
+scipy>=1.11.0                        # Scientific computing
+polars>=0.20.0                       # Fast DataFrame library (alternative to pandas)
+
+# ==================== CODE ANALYSIS & PARSING ========================
+tree-sitter>=0.21.0                  # Parser generator for code analysis
+tree-sitter-languages>=1.5.0         # Language definitions for tree-sitter
+libcst>=1.3.0                        # Concrete Syntax Tree for Python code
+parso>=0.8.3                         # Python parser
+graphql-core>=3.2.0                  # GraphQL schema parsing & validation
+gql>=3.5.0                           # GraphQL client
+
+# ==================== INTEGRATIONS & EXTERNAL APIS ===================
+# Intelligence Platforms
+shodan>=1.29.0                       # Shodan API client
+censys>=2.2.0                        # Censys API client
+binaryedge>=0.2.0                    # BinaryEdge API
+greynoise>=1.0.0                     # GreyNoise API
+virustotal-api>=1.1.2                # VirusTotal API
+zoomeye>=2.3.0                       # ZoomEye API
+
+# Bug Bounty Platforms
+hackerone>=0.1.0                     # HackerOne API
+bugcrowd>=0.1.0                      # Bugcrowd API
+immunefi>=0.1.0                      # Immunefi API
+
+# Development & Code Platforms
+github3.py>=3.3.0                    # GitHub API v3
+gitlab>=4.2.0                        # GitLab API
+jira>=3.6.0                          # Jira API
+slack-sdk>=3.25.0                    # Slack API
+discord.py>=2.3.0                    # Discord API
+python-telegram-bot>=20.6           # Telegram Bot API
+
+# Security Tools Integration
+nuclei-python>=0.1.0                 # Nuclei template integration
+ffuf>=0.1.0                          # FFUF wrapper
+sqlmapapi>=0.1.0                     # SQLMap API integration
+nmap>=0.1.0                          # Nmap Python interface
+masscan>=0.1.0                       # Masscan integration
+
+# ==================== REPORTING & DOCUMENTATION ======================
+jinja2>=3.1.0                        # Template engine for reports
+markdown>=3.5.0                      # Markdown report generation
+mkdocs>=1.5.0                        # Documentation generation
+mkdocs-material>=9.5.0               # Material theme for docs
+weasyprint>=61.0                     # HTML to PDF conversion (for professional reports)
+pillow>=10.0.0                       # Image processing (screenshots, evidence)
+reportlab>=4.0.0                     # PDF generation
+python-docx>=1.1.0                   # Word document generation
+openpyxl>=3.1.2                      # Excel report generation
+
+# ==================== NETWORK & INFRASTRUCTURE =======================
+dnspython>=2.4.0                     # DNS queries & enumeration
+netaddr>=0.8.0                       # Network address manipulation
+netifaces>=0.11.0                    # Network interface information
+psutil>=5.9.0                        # System monitoring & process management
+requests>=2.31.0                     # Synchronous HTTP requests (fallback)
+urllib3>=2.0.0                       # HTTP client with advanced features
+beautifulsoup4>=4.12.0               # HTML parsing (for legacy sites)
+lxml>=4.9.0                          # Fast XML/HTML parsing
+
+# ==================== UTILITIES & HELPERS ============================
+python-dotenv>=1.0.0                 # Environment variable management
+click>=8.1.0                         # Command line interface framework
+typer>=0.9.0                         # Modern CLI framework
+pydantic>=2.0.0                      # Data validation & settings management
+marshmallow>=3.20.0                  # Serialization/deserialization
+loguru>=0.7.2                        # Logging framework
+structlog>=23.1.0                    # Structured logging
+tenacity>=8.2.0                      # Retry decorator for API calls
+cachetools>=5.3.0                    # Caching decorators
+humanize>=4.8.0                      # Human-readable formatting
+arrow>=1.2.3                         # Better dates & times
+tzdata>=2023.3                       # Timezone database
+
+# ==================== TESTING & DEVELOPMENT ==========================
+pytest>=7.4.0                        # Testing framework
+pytest-asyncio>=0.21.0               # Async testing
+pytest-cov>=4.1.0                    # Test coverage
+pytest-xdist>=3.5.0                  # Parallel testing
+hypothesis>=6.88.0                   # Property-based testing
+mypy>=1.7.0                          # Static type checking
+black>=23.11.0                       # Code formatting
+isort>=5.12.0                        # Import sorting
+flake8>=6.1.0                        # Code linting
+pre-commit>=3.5.0                    # Git hooks
+pylint>=3.0.0                        # Code analysis
+
+# ==================== DEPLOYMENT & CONTAINERIZATION ==================
+docker>=6.1.0                        # Docker SDK
+kubernetes>=28.1.0                   # Kubernetes client
+boto3>=1.34.0                        # AWS SDK
+azure-identity>=1.15.0               # Azure authentication
+azure-mgmt-compute>=30.5.0           # Azure compute management
+google-cloud-storage>=2.13.0         # Google Cloud Storage
+google-cloud-compute>=1.14.0         # Google Cloud Compute
+fabric>=3.0.0                        # SSH deployment & commands
+invoke>=2.1.0                        # Task execution
+ansible>=9.0.0                       # Infrastructure as code
+
+# ==================== PLATFORM-SPECIFIC ==============================
+# Windows specific (if needed)
+pywin32>=306                         # Windows API access
+wmi>=1.5.1                           # Windows Management Instrumentation
+
+# Linux specific
+python-prctl>=1.8.1                  # Process control (Linux)
+systemd-python>=234                  # systemd integration
+
+# ==================== SPECIALIZED SECURITY ===========================
+# Reverse Engineering & Binary Analysis
+capstone>=5.0.0                      # Disassembly framework
+keystone-engine>=0.9.2               # Assembly framework
+ropgadget>=7.4                       # ROP gadget finder
+pwntools>=4.11.0                     # CTF framework & exploit development
+
+# Forensics & Memory Analysis
+volatility3>=2.5.0                   # Memory forensics
+rekall>=1.8.0                        # Memory analysis framework
+
+# Wireless & Radio
+scapy-radio>=0.1.0                   # Radio packet manipulation
+pyshark>=0.6.0                       # Wireshark/TShark integration
+
+# ==================== EXPERIMENTAL & RESEARCH ========================
+# Quantum Computing (for future-proofing)
+qiskit>=0.45.0                       # Quantum computing framework
+cirq>=1.3.0                          # Google's quantum computing
+pennylane>=0.33.0                    # Quantum machine learning
+
+# Blockchain & Web3
+web3>=6.11.0                         # Ethereum & EVM chains
+solana>=0.30.0                       # Solana blockchain
+cosmospy>=6.0.0                      # Cosmos SDK chains
+
+# ==================== OPTIONAL BUT RECOMMENDED =======================
+speedtest-cli>=2.1.3                 # Network speed testing
+geoip2>=4.7.0                        # IP geolocation
+maxminddb>=2.4.0                     # MaxMind database reader
+whois>=0.9.28                        # WHOIS queries
+pytesseract>=0.3.10                  # OCR for image analysis
+pyzbar>=0.1.9                        # QR/barcode scanning
+qrcode>=7.4.2                        # QR code generation
+
+# =====================================================================
+# INSTALLATION NOTES:
+# =====================================================================
+# Full installation (CPU-only):
+# pip install -r requirements.txt
+#
+# For GPU acceleration (CUDA 12.1):
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# pip install -r requirements.txt
+#
+# Minimal installation (core only):
+# pip install aiohttp rich cryptography networkx playwright
+#
+# Platform-specific:
+# Linux: sudo apt-get install build-essential python3-dev
+# macOS: brew install libomp pkg-config
+# Windows: Install Visual C++ Build Tools
+# =====================================================================

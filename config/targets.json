@@ -1,0 +1,27 @@
+{
+  "targets": [
+    {
+      "domain": "zimcyber.com",
+      "scope": [
+        "*zimcyber.com, *.api.*"
+      ],
+      "exclude": [],
+      "priority": "high",
+      "auth_tokens": {},
+      "tags": [
+        "external",
+        "bug-bounty"
+      ]
+    }
+  ],
+  "global_settings": {
+    "rate_limit": 10,
+    "max_concurrent": 5,
+    "aggression": "balanced",
+    "auto_report": false,
+    "deep_dive": true,
+    "ai_enabled": false,
+    "respect_robots_txt": false,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  }
+}
