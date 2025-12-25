@@ -10,7 +10,10 @@ import statistics
 from dataclasses import dataclass
 from typing import Dict, List, Tuple, Optional, Callable, Any
 import numpy as np
-from scipy import stats  # Optional, for advanced statistical tests
+try:
+    from scipy import stats  # Optional, for advanced statistical tests
+except Exception:
+    stats = None
 
 @dataclass
 class TemporalSignature:
@@ -166,15 +169,22 @@ class TemporalAnalyzer:
 
         # Basic statistical test: Mann-Whitney U (non-parametric, doesn't assume normal distribution)
         try:
-            u_stat, p_value = stats.mannwhitneyu(times_true, times_false, alternative='two-sided')
-        except ImportError:
+            if stats is not None:
+                u_stat, p_value = stats.mannwhitneyu(times_true, times_false, alternative='two-sided')
+            else:
+                raise Exception("scipy.stats not available")
+        except Exception:
             # Fallback if scipy not available: simple mean comparison
             p_value = 0.05
             u_stat = 0
             mean_true = statistics.mean(times_true)
             mean_false = statistics.mean(times_false)
             # Very crude p-value simulation
-            if abs(mean_true - mean_false) > (statistics.stdev(times_true + times_false) * 1.5):
+            try:
+                combined_std = statistics.stdev(times_true + times_false)
+            except Exception:
+                combined_std = 0.1
+            if combined_std and abs(mean_true - mean_false) > (combined_std * 1.5):
                 p_value = 0.01
 
         mean_true = statistics.mean(times_true)

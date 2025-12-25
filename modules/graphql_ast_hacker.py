@@ -10,8 +10,22 @@ import re
 from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass
 import aiohttp
-from graphql import build_ast_schema, parse, print_ast
-from graphql.language.ast import DocumentNode
+
+try:
+    from graphql import build_ast_schema, parse, print_ast
+    from graphql.language.ast import DocumentNode
+    HAS_GRAPHQL = True
+except ImportError:
+    HAS_GRAPHQL = False
+    # Provide minimal stubs
+    class DocumentNode:
+        pass
+    def build_ast_schema(schema_str):
+        return None
+    def parse(query_str):
+        return None
+    def print_ast(ast):
+        return ""
 
 @dataclass
 class GraphQLVulnerability:
@@ -23,8 +37,9 @@ class GraphQLVulnerability:
     impact: Optional[str] = None
 
 class GraphQLASTHacker:
-    def __init__(self, target_url: str):
+    def __init__(self, target_url: str, knowledge_graph=None):
         self.target_url = target_url
+        self.kg = knowledge_graph
         self.schema = None
         self.introspection_data = None
         self.vulnerabilities: List[GraphQLVulnerability] = []
@@ -471,3 +486,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+# Backwards compatibility: core imports `GraphQLNinja`
+GraphQLNinja = GraphQLASTHacker

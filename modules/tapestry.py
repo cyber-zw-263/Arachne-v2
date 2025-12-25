@@ -112,104 +112,44 @@ class Tapestry:
 {{ vuln.impact }}
 
 #### Proof of Concept
-```{{ vuln.module }}
+```
 {{ vuln.proof_of_concept }}
+```
 
-Remediation
+#### Remediation
 {{ vuln.remediation }}
 
 {% if vuln.references -%}
-
-References
+#### References
 {% for ref in vuln.references -%}
-
-{{ ref }}
+- {{ ref }}
 {% endfor %}
 {% endif %}
 
 {% endfor %}
-  with open(template_dir / "report.md.j2", "w") as f:
-      f.write(md_template)
-  
-  # HTML template
-  html_template = """<!DOCTYPE html>
-<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Security Assessment Report - {{ target }}</title> <style> body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; } h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; } h2 { color: #34495e; margin-top: 30px; } h3 { color: #7f8c8d; } .critical { color: #e74c3c; font-weight: bold; } .high { color: #e67e22; } .medium { color: #f39c12; } .low { color: #27ae60; } .info { color: #3498db; } table { border-collapse: collapse; width: 100%; margin: 20px 0; } th, td { border: 1px solid #ddd; padding: 12px; text-align: left; } th { background-color: #f2f2f2; } .vulnerability { background-color: #f9f9f9; padding: 20px; margin: 20px 0; border-left: 4px solid #3498db; } .severity-badge { display: inline-block; padding: 3px 8px; border-radius: 3px; color: white; font-size: 0.8em; } .critical-badge { background-color: #e74c3c; } .high-badge { background-color: #e67e22; } .medium-badge { background-color: #f39c12; } .low-badge { background-color: #27ae60; } .info-badge { background-color: #3498db; } code { background-color: #f8f9fa; padding: 2px 4px; border-radius: 3px; font-family: 'Courier New', monospace; } pre { background-color: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto; } footer { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #7f8c8d; font-size: 0.9em; } </style> </head> <body> <h1>Security Assessment Report</h1>
-text
-<h2>Executive Summary</h2>
-<p><strong>Target</strong>: {{ target }}</p>
-<p><strong>Assessment Date</strong>: {{ date }}</p>
-<p><strong>Total Vulnerabilities</strong>: {{ summary.total_vulnerabilities }}</p>
-<p><strong>Critical Findings</strong>: {{ summary.critical_count }}</p>
-<p><strong>Overall Risk</strong>: <span class="{{ overall_risk_class }}">{{ overall_risk }}</span></p>
-
-<h2>Vulnerability Summary</h2>
-<table>
-    <tr>
-        <th>Severity</th>
-        <th>Count</th>
-        <th>Percentage</th>
-    </tr>
-    {% for severity in severities %}
-    <tr>
-        <td><span class="severity-badge {{ severity.class }}">{{ severity.name|upper }}</span></td>
-        <td>{{ severity.count }}</td>
-        <td>{{ severity.percentage }}%</td>
-    </tr>
-    {% endfor %}
-</table>
-
-<h2>Detailed Findings</h2>
-{% for vuln in vulnerabilities %}
-<div class="vulnerability">
-    <h3>{{ vuln.title }} <span class="severity-badge {{ vuln.severity }}-badge">{{ vuln.severity|upper }}</span></h3>
-    
-    <p><strong>ID</strong>: {{ vuln.id }}</p>
-    {% if vuln.cvss_score %}
-    <p><strong>CVSS Score</strong>: {{ vuln.cvss_score }}</p>
-    {% endif %}
-    <p><strong>Location</strong>: <code>{{ vuln.location }}</code></p>
-    <p><strong>Discovered</strong>: {{ vuln.discovered_at[:10] }}</p>
-    
-    <h4>Description</h4>
-    <p>{{ vuln.description }}</p>
-    
-    <h4>Impact</h4>
-    <p>{{ vuln.impact }}</p>
-    
-    <h4>Proof of Concept</h4>
-    <pre><code>{{ vuln.proof_of_concept }}</code></pre>
-    
-    <h4>Remediation</h4>
-    <p>{{ vuln.remediation }}</p>
-    
-    {% if vuln.references %}
-    <h4>References</h4>
-    <ul>
-        {% for ref in vuln.references %}
-        <li>{{ ref }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</div>
-{% endfor %}
-
-<h2>Recommendations</h2>
-<ol>
-    <li><strong>Immediate Action</strong>: Address all Critical and High severity findings within 7 days</li>
-    <li><strong>Short-term</strong>: Address Medium severity findings within 30 days</li>
-    <li><strong>Long-term</strong>: Implement continuous security monitoring</li>
-    <li><strong>Preventive</strong>: Conduct regular security training for developers</li>
-</ol>
-
-<footer>
-    <p><strong>Report Generated</strong>: {{ generated_at }}</p>
-    <p><strong>Tool</strong>: Arachne v2.0 - Post-AI Vulnerability Framework</p>
-    <p><strong>Confidentiality</strong>: This report contains sensitive security information. Distribution is restricted to authorized personnel only.</p>
-</footer>
-</body> </html> """
-text
-    with open(template_dir / "report.html.j2", "w") as f:
-        f.write(html_template)
+"""
+        with open(template_dir / "report.md.j2", "w") as f:
+            f.write(md_template)
+        
+        # HTML template (simplified - stored as a separate string to avoid parsing issues)
+        html_template = ('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
+                         '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+                         '<title>Security Assessment Report - {{ target }}</title>'
+                         '<style>body { font-family: Arial, sans-serif; margin: 40px; }</style>'
+                         '</head><body>'
+                         '<h1>Security Assessment Report</h1>'
+                         '<h2>Executive Summary</h2>'
+                         '<p><strong>Target</strong>: {{ target }}</p>'
+                         '<h2>Vulnerability Summary</h2>'
+                         '<table><tr><th>Severity</th><th>Count</th></tr>'
+                         '{% for severity in severities %}<tr><td>{{ severity.name }}</td><td>{{ severity.count }}</td></tr>{% endfor %}'
+                         '</table>'
+                         '<h2>Detailed Findings</h2>'
+                         '{% for vuln in vulnerabilities %}<div><h3>{{ vuln.title }}</h3></div>{% endfor %}'
+                         '<footer><p>Report Generated: {{ generated_at }}</p></footer>'
+                         '</body></html>')
+        with open(template_dir / "report.html.j2", "w") as f:
+            f.write(html_template)
 
 def add_vulnerability(self, vulnerability: Vulnerability):
     """Add a vulnerability to the report."""
@@ -493,3 +433,8 @@ def _summary_to_dict(self, summary: TargetSummary) -> Dict:
         'last_scan': summary.last_scan,
         'technologies': summary.technologies
     }
+    
+    def generate_target_report(self, target_domain: str) -> str:
+        """Generate a simple report for a target."""
+        return f"Security Assessment Report for {target_domain}\nVulnerabilities found: {len(self.vulnerabilities)}"
+ReportWeaver = Tapestry

@@ -169,3 +169,7 @@ class KnowledgeGraph:
             self.graph = nx.node_link_graph(data)
         except FileNotFoundError:
             pass
+
+
+# Backwards compatibility: some modules expect `CorrelationEngine`
+CorrelationEngine = KnowledgeGraph

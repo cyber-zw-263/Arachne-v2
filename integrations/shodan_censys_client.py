@@ -64,3 +64,28 @@ class IntelHarvester:
         except:
             pass
         return []
+
+
+async def query_shodan_host(domain: str, api_key: str) -> List[str]:
+    """Compatibility helper: query shodan and return a list of hostnames/IPs."""
+    harvester = IntelHarvester({'shodan': api_key})
+    try:
+        results = await harvester._query_shodan(domain)
+    except Exception:
+        return []
+
+    hosts = set()
+    for entry in results:
+        # Shodan entries vary; try common fields
+        if isinstance(entry, dict):
+            if 'hostnames' in entry and isinstance(entry['hostnames'], list):
+                for h in entry['hostnames']:
+                    if h:
+                        hosts.add(h.lower())
+            if 'ip_str' in entry:
+                hosts.add(str(entry['ip_str']))
+            if 'ip' in entry:
+                hosts.add(str(entry['ip']))
+            if 'hostname' in entry:
+                hosts.add(str(entry['hostname']))
+    return list(hosts)

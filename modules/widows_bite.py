@@ -60,12 +60,23 @@ class WidowsBite:
     The injection specialist. Finds cracks in the armor and pours poison through them.
     """
 
-    def __init__(self, config: WidowsBiteConfig, http_client: AsyncHTTPClient, correlation_engine: CorrelationEngine):
-        self.config = config
-        self.http = http_client
-        self.correlation = correlation_engine
+    def __init__(self, config: WidowsBiteConfig = None, http_client: AsyncHTTPClient = None, correlation_engine: CorrelationEngine = None):
+        # Support both old and new call signatures
+        if isinstance(config, str):
+            # Old call signature: (target_domain, knowledge_graph)
+            target_domain = config
+            kg = http_client
+            self.config = WidowsBiteConfig(target_base=target_domain)
+            self.http = AsyncHTTPClient()
+            self.correlation = kg
+        else:
+            # New call signature with proper parameters
+            self.config = config or WidowsBiteConfig(target_base="default")
+            self.http = http_client or AsyncHTTPClient()
+            self.correlation = correlation_engine or kg
+        
         self.findings: List[InjectionFinding] = []
-        self.polyglot_gen = PolyglotGenius() if config.enable_polyglot else None
+        self.polyglot_gen = PolyglotGenius() if self.config.enable_polyglot else None
         self.temporal_analyzer = TemporalAnalyzer()
         self.payload_genius = PayloadGenius()
 
@@ -408,3 +419,7 @@ if __name__ == "__main__":
         print("This module requires integration with AsyncHTTPClient and CorrelationEngine.")
 
     asyncio.run(main())
+
+
+# Backwards compatibility: older core imports `InjectionSuite`
+InjectionSuite = WidowsBite

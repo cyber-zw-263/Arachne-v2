@@ -41,8 +41,9 @@ class WebSocketEndpoint:
     auth_token: Optional[str] = None
 
 class WebSocketProtocolPhreak:
-    def __init__(self, target_url: str):
+    def __init__(self, target_url: str, knowledge_graph=None):
         self.target_url = target_url
+        self.kg = knowledge_graph
         self.endpoints: List[WebSocketEndpoint] = []
         self.messages: List[WebSocketMessage] = []
         self.vulnerabilities: List[WebSocketVulnerability] = []
@@ -191,8 +192,8 @@ class WebSocketProtocolPhreak:
             ('json', '{"test": -Infinity}'),
             ('json', '{"test": undefined}'),
             
-            # Deeply nested structures
-            ('nested', json.dumps({'a': {'b': {'c': {'d': {'e': 'deep'}}}} * 10)),
+            # Deeply nested structures (fixed: removed multiplication of dict)
+            ('nested', json.dumps({'a': {'b': {'c': {'d': {'e': 'deep'}}}}})),
             
             # Special characters and injections
             ('injection', '{"cmd": "echo \'test\'"}'),
@@ -636,3 +637,7 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+# Backwards compatibility: core imports `WebSocketPhreak`
+WebSocketPhreak = WebSocketProtocolPhreak

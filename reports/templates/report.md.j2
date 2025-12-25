@@ -1,0 +1,54 @@
+# Security Assessment Report
+
+## Executive Summary
+**Target**: {{ target }}
+**Assessment Date**: {{ date }}
+**Total Vulnerabilities**: {{ summary.total_vulnerabilities }}
+**Critical Findings**: {{ summary.critical_count }}
+**Overall Risk**: {{ overall_risk }}
+
+## Assessment Details
+- **Scan Duration**: {{ scan_duration }}
+- **Methodology**: Automated security scanning with manual verification
+- **Scope**: {{ scope }}
+
+## Vulnerability Summary
+| Severity | Count |
+|----------|-------|
+{% for severity in severities -%}
+| {{ severity.name }} | {{ severity.count }} |
+{% endfor %}
+
+## Detailed Findings
+{% for vuln in vulnerabilities %}
+### {{ vuln.title }}
+- **ID**: {{ vuln.id }}
+- **Severity**: {{ vuln.severity|upper }}
+{% if vuln.cvss_score -%}
+- **CVSS Score**: {{ vuln.cvss_score }}
+{% endif -%}
+- **Location**: {{ vuln.location }}
+- **Discovered**: {{ vuln.discovered_at[:10] }}
+
+#### Description
+{{ vuln.description }}
+
+#### Impact
+{{ vuln.impact }}
+
+#### Proof of Concept
+```
+{{ vuln.proof_of_concept }}
+```
+
+#### Remediation
+{{ vuln.remediation }}
+
+{% if vuln.references -%}
+#### References
+{% for ref in vuln.references -%}
+- {{ ref }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}

@@ -512,3 +512,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# Backwards compatibility: core imports `SyntheticPersonaEngine`
+SyntheticPersonaEngine = SyntheticRelationshipEngine

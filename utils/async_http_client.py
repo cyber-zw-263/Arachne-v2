@@ -58,3 +58,7 @@ class StealthClient:
             raise RuntimeError("Session not initialized")
         
         return await self.session.request(method, url, **kwargs)
+
+
+# Backwards compatibility: some modules expect `AsyncHTTPClient`
+AsyncHTTPClient = StealthClient

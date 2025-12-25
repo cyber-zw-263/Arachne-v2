@@ -92,3 +92,14 @@ class PayloadGenius:
         
         transform = random.choice(transformations)
         return transform(base_payload)
+    
+    def generate_for_injection(self, injection_type: str, param_name: str) -> List[str]:
+        """Generate payloads for a specific injection type."""
+        context = f"{injection_type}_{param_name}"
+        return self.generate_context_aware_payload(context, "param")
+
+
+def heuristic_ai_bypass(original_payload: str) -> str:
+    """Apply heuristic transformations to bypass AI-based security filters."""
+    genius = PayloadGenius()
+    return genius.generate_ai_style_payload(original_payload)
