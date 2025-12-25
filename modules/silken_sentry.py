@@ -10,6 +10,7 @@ to feed the rest of Arachne in real-time.
 import asyncio
 import aiohttp
 import dns.asyncresolver
+import dns.exception
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from urllib.parse import urljoin, urlparse
@@ -86,8 +87,7 @@ class SubdomainHunter:
         try:
             answers = await self.resolver.resolve(fqdn, 'A')
             return [str(r) for r in answers]
-        except (dns.asyncresolver.NXDOMAIN, dns.asyncresolver.NoAnswer,
-                dns.asyncresolver.Timeout):
+        except (dns.exception.DNSException, dns.exception.Timeout, asyncio.TimeoutError):
             # Try CNAME as well
             try:
                 answers = await self.resolver.resolve(fqdn, 'CNAME')
